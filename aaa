@@ -10,34 +10,36 @@
 
 --3)
 -- SELECT Cesta.codigo, Cesta.nome, Produto_cesta.quantidade, Produto.unidade_medida, Produto.nome
--- FROM Produto_cesta JOIN Produto ON
--- Produto.id = Produto_cesta.produto_id
+-- FROM Produto_cesta 
+-- JOIN Produto ON Produto.id = Produto_cesta.produto_id
 -- JOIN Cesta ON Cesta.codigo = Produto_cesta.cesta_codigo 
 -- ORDER BY Cesta.codigo DESC, Produto.nome
 
 
 --4)
 -- SELECT Produto.id, Produto.nome, Mercado.nome, Produto.quant_minima, Pesquisa.preco, Produto.quant_minima*Pesquisa.preco AS "preco_total"
--- FROM Pesquisa JOIN Produto ON
--- Produto.id = Pesquisa.produto_id
+-- FROM Pesquisa 
+-- JOIN Produto ON Produto.id = Pesquisa.produto_id
 -- JOIN Mercado ON Mercado.id = Pesquisa.mercado_id
 -- ORDER BY Produto.nome, Preco
 
 
 --5)
 -- SELECT Mercado.nome, Produto.id, Produto.nome, Produto.unidade_medida, Produto.quant_minima, Pesquisa.preco, Produto.quant_minima*Pesquisa.preco AS "preco_total"
--- FROM Pesquisa JOIN Produto ON
--- Produto.id = Pesquisa.produto_id
+-- FROM Pesquisa 
+-- JOIN Produto ON Produto.id = Pesquisa.produto_id
 -- JOIN Mercado ON Mercado.id = Pesquisa.mercado_id
 -- WHERE Mercado.nome = 'Quitanda do Zé'
 -- ORDER BY Produto.quant_minima*Pesquisa.preco DESC
 
 
 --6)
-SELECT Cesta.nome, Produto.nome, Mercado.nome, Produto.quant_minima, Pesquisa.preco, Produto.quant_minima*Pesquisa.preco AS "preco_total"
-FROM Cesta,Pesquisa
+SELECT Cesta.nome, Produto.nome, Mercado.nome, Produto_cesta.quantidade, Pesquisa.preco, Produto_cesta.quantidade*Pesquisa.preco AS "preco_total"
+FROM Cesta,Produto_cesta,Pesquisa
 JOIN Produto ON Produto.id = Pesquisa.produto_id
 JOIN Mercado ON Mercado.id = Pesquisa.mercado_id
-ORDER BY Cesta.nome, Preco
 
+ORDER BY Cesta.nome, Produto.nome, Preco
+
+??????nao esta pronto o 6
 
