@@ -35,11 +35,19 @@
 
 --6)
 SELECT Cesta.nome, Produto.nome, Mercado.nome, Produto_cesta.quantidade, Pesquisa.preco, Produto_cesta.quantidade*Pesquisa.preco AS "preco_total"
-FROM Cesta,Produto_cesta,Pesquisa
-JOIN Produto ON Produto.id = Pesquisa.produto_id
-JOIN Mercado ON Mercado.id = Pesquisa.mercado_id
+FROM Pesquisa 
+JOIN Produto ON Pesquisa.produto_id = Produto.id
+JOIN Mercado ON Pesquisa.mercado_id = Mercado.id
+JOIN Cesta ON Produto_cesta.cesta_codigo = Cesta.codigo
+JOIN Produto_cesta ON Produto.produto_id = Produto_cesta.id
 
-ORDER BY Cesta.nome, Produto.nome, Preco
+
+
+-- FROM Produto_cesta 
+-- JOIN Cesta ON Produto_cesta.cesta_codigo = Cesta.codigo
+-- JOIN Produto ON Produto_cesta.produto_id = Produto.id
+-- JOIN Pesquisa ON Produto_cesta.produto_id = Pesquisa.id
+-- JOIN Mercado ON Pesquisa.mercado_id = Mercado.id
 
 ??????nao esta pronto o 6
 
