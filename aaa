@@ -51,3 +51,15 @@ JOIN Produto_cesta ON Produto.produto_id = Produto_cesta.id
 
 ??????nao esta pronto o 6
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Exercicio em sala
+
+
+Select codigo,nome_cidade,nome_pais,idioma.nome
+from cidade 
+JOIN pais ON pais_id = id
+JOIN idioma ON idioma_principal = sigla	
+where turistica = true
+order by nome_pais desc,nome_cidade
+
+
