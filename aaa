@@ -63,3 +63,118 @@ where turistica = true
 order by nome_pais desc,nome_cidade
 
 
+23/09
+
+-- Select codigo,nome_cidade,nome_pais,idioma.nome
+-- from cidade 
+-- JOIN pais ON pais_id = id
+-- JOIN idioma ON idioma_principal = sigla	
+-- where turistica = true
+-- order by nome_pais desc,nome_cidade
+
+
+-- SELECT funcionario.pessoa_id, nome, sexo, cidade.nome_cidade
+-- FROM pessoa
+-- JOIN cidade ON cidade_codigo = codigo
+-- JOIN funcionario ON pessoa.id = pessoa_id
+-- WHERE nome_cidade ILIKE 'campinas%' AND sexo = 'F'
+-- ORDER BY nome
+
+
+-- SELECT *
+-- FROM Pessoa JOIN Cidade ON Pessoa.cidade_codigo = Cidade.codigo
+-- 	JOIN Funcionario ON Funcionario.pessoa_id = Pessoa.id
+-- 	JOIN Piloto ON Piloto.pessoa_id = Funcionario.pessoa_id
+-- 	WHERE cidade.nome_cidade ilike 'são%'
+
+
+-- SELECT COUNT(*) FROM fakenames
+
+
+-- SELECT gender, COUNT (*)
+-- FROM fakenames
+-- GROUP BY gender
+
+
+-- SELECT state, gender, COUNT (*)
+-- FROM fakenames
+-- GROUP BY state, gender
+-- ORDER BY state DESC, gender
+
+
+-- SELECT state, gender, max(age), min(age), COUNT(*),SUM(age),AVG(age), SUM(age) *1.0 / COUNT (*)
+-- FROM fakenames
+-- GROUP BY state, gender
+-- ORDER BY AVG (age)
+
+
+-- SELECT gender, bloodtype, COUNT(*)
+-- FROM fakenames
+-- GROUP BY gender, bloodtype
+-- ORDER BY COUNT(*) DESC
+
+
+-- SELECT givenname, age, CASE WHEN age >= 60 THEN 'IDOSO' ELSE 'JOVEM' END
+-- FROM fakenames
+-- ORDER BY givenname
+
+-- SELECT givenname, age, 
+-- 	CASE 
+-- 	WHEN age >= 60 THEN 'IDOSO' 
+-- 	WHEN age >= 40 THEN 'ADULTO' 
+-- 	WHEN age >= 18 THEN 'JOVEM'
+-- 	ELSE 'MENOR'
+-- 	END
+-- FROM fakenames
+-- ORDER BY givenname
+
+
+-- SELECT
+-- 	CASE 
+-- 	WHEN age >= 60 THEN 'IDOSO' 
+-- 	WHEN age >= 40 THEN 'ADULTO' 
+-- 	WHEN age >= 18 THEN 'JOVEM'
+-- 	ELSE 'MENOR'
+-- 	END,
+-- 	COUNT(*)
+-- FROM fakenames
+-- GROUP BY 1
+-- ORDER BY 2 DESC
+--order by count(*) desc -- outro exemplo
+
+
+-- SELECT
+-- 	CASE 
+-- 		WHEN age >= 60 THEN 'IDOSO' 
+-- 		WHEN age >= 40 THEN 'ADULTO' 
+-- 		WHEN age >= 18 THEN 'JOVEM'
+-- 		ELSE 'MENOR'
+-- 	END,
+-- 	COUNT(*)
+-- FROM fakenames
+-- GROUP BY 
+-- 	CASE 
+-- 		WHEN age >= 60 THEN 'IDOSO' 
+-- 		WHEN age >= 40 THEN 'ADULTO' 
+-- 		WHEN age >= 18 THEN 'JOVEM'
+-- 		ELSE 'MENOR'
+-- 		END
+-- ORDER BY 2 DESC
+
+
+-- SELECT gender,
+-- 	CASE 
+-- 		WHEN age >= 60 THEN 'IDOSO' 
+-- 		WHEN age >= 40 THEN 'ADULTO' 
+-- 		WHEN age >= 18 THEN 'JOVEM'
+-- 		ELSE 'MENOR'
+-- 	END,
+-- 	COUNT(*)
+-- FROM fakenames
+-- GROUP BY 1,2
+-- ORDER BY 1,2 
+
+
+
+
+
