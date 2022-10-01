@@ -174,6 +174,64 @@ order by nome_pais desc,nome_cidade
 -- GROUP BY 1,2
 -- ORDER BY 1,2 
 
+-->>29/09>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+-- SELECT * FROM Fakenames
+--todas alinhas da coluna = COUNT(*)
+
+-- SELECT title, COUNT (*)
+-- FROM Fakenames
+-- GROUP BY title
+
+-- SELECT gender, COUNT (*)
+-- FROM Fakenames
+-- GROUP BY gender
+
+-- SELECT gender|| '-' || state,COUNT (*)
+-- FROM Fakenames
+-- GROUP BY gender, state
+-- ORDER BY state, gender
+
+-- SELECT gender|| '-' || state,COUNT (*), SUM(age)
+-- FROM Fakenames
+-- GROUP BY gender, state
+-- ORDER BY state, gender
+
+--errado
+-- SELECT pessoa_id,pessoa.id
+-- FROM Piloto,Pessoa
+-- Order by
+
+-->>30/09>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+-- SELECT now()
+
+-- SELECT now(), date_part('day',now())
+-- 	 date_part('cintury',now())
+
+
+-- SELECT data_nasc, nome
+-- FROM Pessoa
+
+-- SELECT min(data_nasc), age(min(data_nasc)),
+-- 	   max(data_nasc), age(max(data_nasc))
+-- FROM Pessoa
+
+
+-- SELECT min(data_nasc), age(min(data_nasc)),
+-- 	   max(data_nasc), age(max(data_nasc)),
+-- 	   age(min(data_nasc)) - age(max(data_nasc))
+-- FROM Pessoa
+
+
+-- SELECT RIGHT(nome_cidade,4), nome_cidade 
+-- FROM Cidade;
+
+-- SELECT
+-- SUBSTRING(nome_cidade from position('(' in nome_cidade) + 1 for 2 ),nome_cidade
+-- FROM Cidade
+
+
 
 
 
