@@ -232,6 +232,203 @@ order by nome_pais desc,nome_cidade
 -- FROM Cidade
 
 
+######################################################################################################
+
+-- PAULO VINICIUS CRISTALDO ARGUELHO
+-- TADS 3
+
+-- 1. Nome dos funcionários;
+-- 2. Data de nascimento dos pilotos;
+-- 3. Nome e salário das pilotos do sexo feminino;
+-- 4. CPF das aeromoças;
+-- 5. Idade em anos das pessoas;
+-- 6. Funcionários com idade menor que 50 anos;
+-- 7. Lista de todos os pilotos ordenada por suas idades;
+-- 8. Aeromoças com idade inferior a 40 anos com nome iniciando em A;
+-- 9. CPF dos pilotos cujo nome iniciam em C;
+-- 10. Nome e idade das aeromoças na época que fizeram o curso da ANAC;
+-- 11. Aeromoças com mais que 5 anos de formação;
+-- 12. Funcionários com telefones com prefixo 11;
+-- 13. Funcionários com telefones com prefixo 64;
+-- 14. Todos os domínios dos e-mails das pessoas;
+-- 15. Todos os domínios dos e-mails dos funcionários;
+-- 16. Domínios de e-mail finalizados em .com (sem repetição);
+-- 17. Nomes, idades e e-mails dos funcionários com e-mail .com, com mais de 45 anos, morados de MS
+-- e com salário superior a R$5000,00;
+-- 18. E-mails que contém a palavra souza;
+-- 19. Prenome dos pilotos com DDD 69 com CPF final par;
+-- 20. Aeromoças (ou comissários) que também são pilotos;
+-- 21. Aeromoças com mais de 50 anos que fizeram curso da ANAC a mais que 3 anos;
+-- 22. Nome das aeromoças e idiomas por elas falados;
+-- 23. Pilotos com mais que 50 anos que não moram no estado de SP;
+-- 24. Funcionários com idade menor do que 45 anos que moram no estado de SP;
+-- 25. Aeromoças com menos de 50 anos residentes no estado de SP;
+-- 26. Quantidade de pessoas com mesmo prenome;
+-- 27. Quantidade de pessoas com mesmo sobrenome;
+-- 28. Média das idades das pessoas da família Pereira;
+-- 29. Menor e maior idade de nascimento das pessoas com sobrenome Lima;
+-- 30. Quantidade de pessoas que possuem telefone e CPF terminados com o mesmo dígito;
+-- 31. Quantidade de pilotos do sexo feminino, moradoras em cada Estado;
+-- 32. Estados que concentram mais do que 10 funcionários;
+-- 33. Média salarial por cargo e sexo;
+-- 34. Média de idade das aeromoças;
+-- 35. Média de idade dos pilotos que moram no estado de SP;
+-- 36. Nome das três cidades com o maior número de aeromoças;
+-- 37. Quantidade de aeromoças moradoras em cada Cidade;
+-- 38. Domínios de e-mail com maior frequência (aparecem mais);
+
+--####################################################################################--
+
+--- 1. Nome dos funcionários;
+-- SELECT nome
+-- FROM pessoa
+-- JOIN funcionario ON pessoa.id = pessoa_id
+-- ORDER BY nome
+
+
+--- 2. Data de nascimento dos pilotos;
+-- SELECT nome,Piloto.codigo_anac,pessoa.data_nasc
+-- FROM pessoa
+-- JOIN funcionario ON pessoa.id = pessoa_id
+-- JOIN Piloto ON Piloto.pessoa_id = Funcionario.pessoa_id
+-- ORDER BY nome
+
+
+--- 3. Nome e salário das pilotos do sexo feminino;
+-- SELECT nome,funcionario.salario
+-- FROM pessoa
+-- JOIN funcionario ON pessoa.id = pessoa_id
+-- JOIN Piloto ON Piloto.pessoa_id = Funcionario.pessoa_id
+-- WHERE sexo = 'F'
+-- ORDER BY nome
+
+
+--- 4. CPF das aeromoças;
+-- SELECT nome,cpf
+-- FROM Pessoa
+-- JOIN Funcionario ON Pessoa.id = pessoa_id
+-- JOIN Aeromoca ON Aeromoca.pessoa_id = Funcionario.pessoa_id
+-- ORDER BY nome
+
+
+--- 5. Idade em anos das pessoas;
+-- SELECT age(data_nasc), date_part('year', age(data_nasc) )
+-- FROM Pessoa
+
+
+--- 6. Funcionários com idade menor que 50 anos;
+--   SELECT nome,data_nasc
+--   FROM pessoa
+--   JOIN funcionario ON pessoa.id = pessoa_id
+--   WHERE data_nasc < 50
+
+
+-- 7. Lista de todos os pilotos ordenada por suas idades;
+--  SELECT nome,Piloto.codigo_anac, age(data_nasc)
+--  FROM pessoa
+--  JOIN funcionario ON pessoa.id = pessoa_id
+--  JOIN Piloto ON Piloto.pessoa_id = Funcionario.pessoa_id
+--  ORDER BY data_nasc DESC
+
+
+-- 8. Aeromoças com idade inferior a 40 anos com nome iniciando em A;
+-- SELECT nome,age(data_nasc)
+-- FROM Pessoa
+-- JOIN Funcionario ON Pessoa.id = pessoa_id
+-- JOIN Aeromoca ON Aeromoca.pessoa_id = Funcionario.pessoa_id
+-- WHERE pessoa.nome ilike 'a%' and sexo = 'F'
+
+
+-- 9. CPF dos pilotos cujo nome iniciam em C;
+-- SELECT nome,Piloto.codigo_anac, cpf
+-- FROM pessoa
+-- JOIN funcionario ON pessoa.id = pessoa_id
+-- JOIN Piloto ON Piloto.pessoa_id = Funcionario.pessoa_id
+-- WHERE pessoa.nome ilike 'c%' 
+-- ORDER BY nome
+
+
+-- 10. Nome e idade das aeromoças na época que fizeram o curso da ANAC;
+--  SELECT nome,age(data_nasc) - age(data_curso_anac) as "idade"
+--  FROM Pessoa
+--  JOIN Funcionario ON Pessoa.id = pessoa_id
+--  JOIN Aeromoca ON Aeromoca.pessoa_id = Funcionario.pessoa_id
+
+
+-- 11. Aeromoças com mais que 5 anos de formação;
+-- SELECT nome,age(data_nasc) - age(data_curso_anac) as "idade"
+--  FROM Pessoa
+--  JOIN Funcionario ON Pessoa.id = pessoa_id
+--  JOIN Aeromoca ON Aeromoca.pessoa_id = Funcionario.pessoa_id
+--  WHERE idade - now() > 5
+
+
+-- 12. Funcionários com telefones com prefixo 11;
+--  SELECT nome,telefone
+--  FROM pessoa
+--  JOIN funcionario ON pessoa.id = pessoa_id
+--  WHERE pessoa.telefone ilike '(11)%'
+-- ORDER BY nome
+
+
+-- 13. Funcionários com telefones com prefixo 64;
+--   SELECT nome,telefone
+--   FROM pessoa
+--   JOIN funcionario ON pessoa.id = pessoa_id
+--   WHERE pessoa.telefone ilike '(64)%'
+--   ORDER BY nome
+
+
+-- 14. Todos os domínios dos e-mails das pessoas;
+-- SELECT email
+-- FROM pessoa
+-- ORDER BY nome
+
+
+-- 15. Todos os domínios dos e-mails dos funcionários;
+--  SELECT email
+--  FROM pessoa
+--  JOIN funcionario ON pessoa.id = pessoa_id
+--  ORDER BY nome
+
+
+-- 16. Domínios de e-mail finalizados em .com (sem repetição);
+-- SELECT email
+-- FROM pessoa
+-- WHERE pessoa.email like '%.com'
+
+
+-- 18. E-mails que contém a palavra souza;
+-- SELECT email
+-- FROM pessoa
+-- WHERE pessoa.email ilike '%SOUZA%'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
